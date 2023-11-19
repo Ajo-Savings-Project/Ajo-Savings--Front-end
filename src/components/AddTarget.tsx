@@ -7,7 +7,6 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { getTargetInfo } from "../slices/targetSlice";
 import { Target } from "./Target";
 import { Link } from "react-router-dom";
-import SearchResult from "./SearchResult";
 
 
 export interface SavingsCardProps {
@@ -94,14 +93,9 @@ export const AddTarget: React.FC<Props> = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  const [searchTarget , setSetSearchTarget] = useState('')
-  return ( 
-
+  return (
     <>
-    <SearchResult value ={searchTarget} onSearch={(e:any)=>setSetSearchTarget(e.target.value)}/>
-
-      <div className="bg-gray-50 h-screen pl-7 pb-5 pr-32 pt-5 mt-4">
+      <div className="bg-gray-50 h-screen pl-7 pb-5 pr-32 pt-5">
         <div className="pt-6 flex justify-between w-250 h-11.25">
           <h1 className="text-black font-bold">My Goals</h1>
           <h3 className="text-cyan-600 cursor-pointer hover:bg-cyan-500 hover:rounded-full hover:p-1 hover:text-white hover:scale-105 hover:shadow-md transition-transform duration-300 ease-in-out" onClick={openModal}>
@@ -115,10 +109,7 @@ export const AddTarget: React.FC<Props> = () => {
         )}
         {/* {Datar.map((item: { category: string; target: string; total_amount_saved: string; total_amount: string; }, index: React.Key | null | undefined) => ( */}
        
-        {targets.filter((item)=>{
-          return searchTarget.toLocaleLowerCase() === "" ? item : item.category.toLocaleLowerCase().includes(searchTarget) ||
-          "" ? item : item.name.toLocaleLowerCase().includes(searchTarget)
-        }).map((item, index) => (
+        {targets.map((item, index) => (
            <div className="hover:scale-105 hover:shadow-md transition-transform duration-300 ease-in-out">
           <SavingsCard
             id={item.id}

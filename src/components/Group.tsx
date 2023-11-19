@@ -9,9 +9,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from "../store/hooks/index";
 import { getAllGroupMember } from "../slices/getGroupMemberSlice";
-import SearchResult from "./SearchResult";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 
@@ -20,7 +19,7 @@ const Group = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { allGroupsWithMember } = useAppSelector((state) => state.allGroupsWithMember)
-const [serachGroup , setSearchGroup] = useState('')
+
 
 
   const fetchallGroupsWithMember = async () => {
@@ -46,9 +45,7 @@ const [serachGroup , setSearchGroup] = useState('')
   return (
     <>
 
-       <SearchResult value ={serachGroup}
-       onSearch={(e:any)=>setSearchGroup(e.target.value)}
-       />
+
 
       <div className="b">
 
@@ -74,9 +71,7 @@ const [serachGroup , setSearchGroup] = useState('')
 
         </div>
         {
-          allGroupsWithMember.filter((item)=>{
-        return serachGroup.toLocaleLowerCase() === '' ? item : item.title.toLocaleLowerCase().includes(serachGroup)    
-          }).map((item) => (
+          allGroupsWithMember.map((item) => (
             <div key={item.id} className="sm:flex sm:justify-start sm:items-start md:w-[800px] lg:w-[870px] xl:w-[1100px] sm:p-[30px] sm:shadow-lg sm:mt-[30px] bg-white">
               <div className="shrink-0 ">
                 <img src={item.group_image} alt="" className="w-[134px] h-[184px] mb-10" />

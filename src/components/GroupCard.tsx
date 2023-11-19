@@ -11,8 +11,7 @@ import { getAllGroups } from "../slices/getAllGroupSlice";
 import { toast } from "react-toastify";
 import axios from "../api/httpService";
 import { AllGroupsAttributes } from "../slices/getAllGroupSlice";
-import { getAllGroupMember } from "../slices/getGroupMemberSlice";
-import SearchResult from "./SearchResult";
+import { getAllGroupMember } from "../slices/getGroupMemberSlice"; 
 
 
 interface Prop {
@@ -55,7 +54,7 @@ const GroupCard = ({ setShowModal }: Prop) => {
 
       dispatch(getAllGroupMember)
       await fetchallGroups()
-
+      
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setLoading(false);
@@ -73,15 +72,10 @@ const GroupCard = ({ setShowModal }: Prop) => {
       }
     }
   };
-  const [searchExplore, setSearchExplore] = useState('')
 
   return (
     <>
-      <SearchResult value={searchExplore} onSearch={(e: any) => setSearchExplore(e.target.value)} />
-      {allGroups.filter((item: { title: string; frequency: string; }) => {
-        return searchExplore.toLocaleLowerCase() === "" ? item : item.title.toLocaleLowerCase().includes(searchExplore) ||
-          "" ? item : item.frequency.toLocaleLowerCase().includes(searchExplore)
-      }).map((allGroup) => (
+      {allGroups.map((allGroup) => (
         <div
           key={allGroup.id}
           className="p-7 bg-white flex mb-4 flex-col md:flex-row md:justify-start md:items-center md:w-[800px] lg:w-[870px] xl:w-[1100px] md:m-[30px] md:g"
@@ -113,12 +107,12 @@ const GroupCard = ({ setShowModal }: Prop) => {
                   disabled={loading && selectedGroup?.id === allGroup.id}
                   className="bg-cyan-600 text-white ml-6 mr-10 rounded-lg"
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  onClick={() => { setSelectedGroup(allGroup); joinGroup(allGroup.id) }}> {loading && selectedGroup?.id === allGroup.id ? "loading" : "Join"} </ButtonSmall>
-
+                  onClick={() => {setSelectedGroup(allGroup); joinGroup(allGroup.id)}}> {loading && selectedGroup?.id === allGroup.id ? "loading" : "Join"} </ButtonSmall>
+                
 
                 <span
                   className=" p-2 hover:bg-gray-200 hover:rounded-lg active:text-white"
-                  onClick={() => { setSelectedGroup(allGroup); setIsOpen((prev) => !prev) }}
+                  onClick={() => {setSelectedGroup(allGroup); setIsOpen((prev) => !prev)}}
                 >
                   <BsThreeDotsVertical className="" />
                 </span>

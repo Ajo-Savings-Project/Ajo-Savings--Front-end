@@ -1,26 +1,27 @@
-
 import Add from "../../assets/dashboard/add.png";
 import Group from "../../assets/dashboard/group.png";
 import AddMoneyModal from "../AddMoneyModal";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { getGroupSavings } from "../../slices/groupSavingSlice";
+import { IoRemoveCircleOutline } from "react-icons/io5";
 
+interface Prop {
+  setShow: any;
+}
 
-
-
-const GroupSavings = () => {
-  const dispatch = useAppDispatch()
+const GroupSavings = ({ setShow }: Prop) => {
+  const dispatch = useAppDispatch();
   // const { data } = useAppSelector((state) => state.payment)
-  const { groupSavings } = useAppSelector((state) => state.groupSavings)
-  const [showModal, setShowModal] = useState(false)
+  const { groupSavings } = useAppSelector((state) => state.groupSavings);
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
-    async function fetch(){
-     await  dispatch(getGroupSavings()).unwrap()
+    async function fetch() {
+      await dispatch(getGroupSavings()).unwrap();
     }
-   
-   fetch
-  }, [dispatch])
+
+    fetch;
+  }, [dispatch]);
   return (
     <div className="inline-flex flex-col items-start gap-[8px] pl-[16px] pr-[8px] py-[16px] relative flex-[0_0_auto] bg-white rounded-[16px] border border-solid border-grey-200 shadow-bottom-card-shadow-light">
       <div className="inline-flex items-center gap-[213px] relative flex-[0_0_auto]">
@@ -31,18 +32,30 @@ const GroupSavings = () => {
           Total Group Savings Wallet
         </div>
 
-        <div className="relative w-fit [font-family:'Inter-SemiBold',Helvetica] font-semibold text-main-text text-[24px] text-center tracking-[0.12px] leading-[20px] whitespace-nowrap">  ₦ {groupSavings.total_amount}</div>
-
+        <div className="relative w-fit [font-family:'Inter-SemiBold',Helvetica] font-semibold text-main-text text-[24px] text-center tracking-[0.12px] leading-[20px] whitespace-nowrap">
+          {" "}
+          ₦ {groupSavings.total_amount}
+        </div>
       </div>
 
       <div
         className="flex items-center hover:scale-105 hover:shadow-md transition-transform duration-300 ease-in-out justify-between pl-[16px] pr-[32px] py-[4px] relative self-stretch w-full flex-[0_0_auto] bg-cyan-600 rounded-[16px]"
         onClick={() => setShowModal(!showModal)}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
       >
         <img className="relative w-[24px] h-[24px]" alt="Add" src={Add} />
         <div className="relative w-fit mt-[-1.00px] font-text-md-medium font-[number:var(--text-md-medium-font-weight)] text-white text-[length:var(--text-md-medium-font-size)] text-center tracking-[var(--text-md-medium-letter-spacing)] leading-[var(--text-md-medium-line-height)] whitespace-nowrap [font-style:var(--text-md-medium-font-style)]">
           Add money
+        </div>
+      </div>
+
+      <div
+        onClick={() => setShow((prev: any) => !prev)}
+        className="flex items-center hover:scale-105 hover:shadow-md transition-transform duration-300 ease-in-out justify-between pl-[16px] pr-[32px] py-[4px] relative self-stretch w-full flex-[0_0_auto] bg-cyan-600 rounded-[16px] mt-2 cursor-pointer"
+      >
+        <IoRemoveCircleOutline className="w-[24px] h-[24px] text-white" />
+        <div className="relative w-fit mt-[-1.00px] font-text-md-medium font-[number:var(--text-md-medium-font-weight)] text-white text-[length:var(--text-md-medium-font-size)] text-center tracking-[var(--text-md-medium-letter-spacing)] leading-[var(--text-md-medium-line-height)] whitespace-nowrap [font-style:var(--text-md-medium-font-style)]">
+          Withdraw
         </div>
       </div>
 

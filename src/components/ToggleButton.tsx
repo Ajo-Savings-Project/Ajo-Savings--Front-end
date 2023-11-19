@@ -1,5 +1,5 @@
 // ToggleButton.tsx
-
+import React, { useState } from 'react';
 import { BsToggle2Off, BsToggle2On } from 'react-icons/bs';
 
 type ToggleButtonProps = {
@@ -9,7 +9,7 @@ type ToggleButtonProps = {
 };
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({checked =false, label, onToggle }) => {
- 
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
     // setIsChecked(!isChecked);

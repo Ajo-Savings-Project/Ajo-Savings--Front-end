@@ -1,5 +1,5 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "../../components/common/ScrollToTop";
 import NotFound from "../pages/NotFoundPage";
@@ -32,25 +32,16 @@ import KYC from "../pages/KYC/KYC.tsx";
 import AddMoneyModal from "../../components/AddMoneyModal.tsx"
 import OtpPage from "../pages/OtpPage.tsx";
 import PaymentVerification from "../pages/payment-verificatin.tsx"
-// import { MagicBellProvider } from '@magicbell/magicbell-react';
-// import Notifications from '../../components/Notification.tsx';
 
 
 export const BaseRoute: React.FC = () => {
-
-  // const MAGICBELL_API_KEY: string | undefined = 
-
-  // if (!MAGICBELL_API_KEY) {
-  //   throw new Error("MagicBell API key is missing.");
-  // }
   return (
     <BrowserRouter>
-
       <ScrollToTop>
         <Routes>
           <Route path="layout" element={<DashboardLayout />}></Route>
           <Route path="/" element={<LandingPage />}></Route>
-          <Route path="/dashboard" element={<Dashboard  />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/savings" element={<Savings />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/confirmPassword" element={<ConfirmPassword />} />
@@ -91,7 +82,6 @@ export const BaseRoute: React.FC = () => {
             <Route path="exploregroups" element={<ExploreGroups />} />
             <Route path="logout" element={<Logout />} />
             <Route path="verify-payment" element={<PaymentVerification />} />
-            {/* <Route path="notification" element={<Notifications />} /> */}
 
 
             {/* <Route path="viewgroups" element={<ViewGroup />} /> */}
@@ -106,8 +96,6 @@ export const BaseRoute: React.FC = () => {
           </Route>
         </Routes>
       </ScrollToTop>
-
-
     </BrowserRouter>
   );
 };
