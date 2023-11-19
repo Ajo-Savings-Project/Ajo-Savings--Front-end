@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-lady{
+  background-image: url("./assets/lady-trader.png");
+}
+
+
+
+
+
+
+
+
+/* In your CSS */
+.font-bodoni-moda {
+  font-family: 'Bodoni Moda', sans-serif;
+}
+
+/* styles.css or your CSS file */
+:root {
+  --Green-1: #219653;
+  --Red: #EB5757;
+}

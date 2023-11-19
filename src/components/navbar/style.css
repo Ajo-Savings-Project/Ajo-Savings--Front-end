@@ -1,0 +1,25 @@
+/* Add this CSS to your project's stylesheet */
+
+/* Style for the profile popup */
+.profile-popup {
+  position: absolute;
+  top: 100%; /* Position it below the profile picture */
+  left: 50%; /* Position it centered under the profile picture */
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: white;
+  padding: 8px; /* Reduce padding to make it smaller */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000; /* Adjust the z-index as needed to ensure it's above other content */
+}
+
+/* Style for the button inside the profile popup */
+.profile-popup button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+/* Style for other elements inside the modal if needed */
